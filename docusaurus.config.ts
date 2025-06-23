@@ -120,9 +120,9 @@ const config: Config = {
         id: "api", // plugin id
         docsPluginId: "classic", // configured for preset-classic
         config: {
-          petstore: {
+          hiyori: {
             specPath: "examples/hiyori.yaml",
-            outputDir: "docs/hiyori",
+            outputDir: "docs/REST API",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
