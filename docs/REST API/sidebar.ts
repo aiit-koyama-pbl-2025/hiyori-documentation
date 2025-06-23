@@ -4,7 +4,7 @@ const sidebar: SidebarsConfig = {
   apisidebar: [
     {
       type: "doc",
-      id: "hiyori/fastapi",
+      id: "REST API/fastapi",
     },
     {
       type: "category",
@@ -12,7 +12,7 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "hiyori/delete-repository-api-repositories-repo-id-delete",
+          id: "REST API/delete-repository-api-repositories-repo-id-delete",
           label: "Delete Repository",
           className: "api-method delete",
         },
@@ -24,7 +24,7 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "hiyori/upload-file-api-upload-post",
+          id: "REST API/upload-file-api-upload-post",
           label: "Upload File",
           className: "api-method post",
         },
@@ -36,7 +36,7 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "hiyori/read-root-get",
+          id: "REST API/read-root-get",
           label: "Read Root",
           className: "api-method get",
         },
