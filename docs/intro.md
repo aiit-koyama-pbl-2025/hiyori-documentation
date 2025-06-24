@@ -2,46 +2,110 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# チュートリアル
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Let's discover **hiyori in less than 5 minutes**.
 
 ## Getting Started
 
-Get started by **creating a new site**.
+本チュートリアルでは Flask のアプリケーションを zip 形式でアップロードし、発行されたドメインにアクセスするまでの手順を紹介します。
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+### 必要なもの
 
-### What you'll need
+- curl コマンドを実行できる環境
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## Flask アプリケーションの作成
 
-## Generate a new site
+まずはシンプルな Flask アプリケーションを作成します。
 
-Generate a new Docusaurus site using the **classic template**.
+### 構成ファイル
 
-The classic template will automatically be added to your project after you run the command:
+アプリケーションのファイルをまとめる`app`フォルダを用意し、以下の 3 つのファイルを作成します。
 
-```bash
-npm init docusaurus@latest my-website classic
+- main.py
+- requirements.txt
+- Procfile
+
+作成が終われば、`app`フォルダの構造は以下のようになります。
+
+```
+app/
+├── main.py
+├── requirements.txt
+└── Procfile
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+### 🧾 各ファイルの内容
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+#### `main.py`
 
-## Start your site
+```python
+from flask import Flask
 
-Run the development server:
+app = Flask(__name__)
 
-```bash
-cd my-website
-npm run start
+@app.route("/")
+def index():
+    return "foo!"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
+
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+#### `requirements.txt`
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+```
+flask
+```
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+#### `Procfile`
+
+```
+web: python main.py
+```
+
+アプリケーションの作成が完了したら、`app`フォルダを zip に圧縮します
+
+:::tip `macOS / Linux` の場合
+
+```bash
+cd app
+zip -r ../app.zip .
+cd ..
+```
+
+:::
+:::tip `Windows` の場合
+
+```
+Compress-Archive -Path .\app\* -DestinationPath .\app.zip
+```
+
+:::
+
+## アプリケーションのデプロイ
+
+以下の curl コマンドを実行して、アプリケーションをアップロードします。<br/>
+このコマンドは、zip ファイルをサーバーにアップロードし、割り当てられたアプリケーション ID を UUID 変数に格納します。
+
+```
+UUID=$(curl -s -X POST http://hiyori.cloud:8081/api/upload \
+ -F "file=@app.zip" \
+ | tee /dev/tty \
+ | jq -r '.id')
+```
+
+## 動作確認
+
+アップロードが完了したら、以下のコマンドでアプリケーションが正しく動作しているか確認します。
+
+```
+curl -H "Host: ${UUID}.hiyori.cloud" http://hiyori.cloud
+```
+
+期待通り`"foo!"`というレスポンスが返れば成功です 🎉
+:::info レスポンスが返ってこない時
+アプリケーションのデプロイには 2~3 分の時間を要します。<br/>
+`"foo!"`というレスポンスが返ってこない時は、時間を空けて再度お試しください。
+:::
