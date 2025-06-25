@@ -34,8 +34,6 @@ const config: Config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           docItemComponent: "@theme/ApiItem",
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         blog: false,
         theme: {
@@ -60,11 +58,6 @@ const config: Config = {
           position: "left",
           label: "Tutorial",
         },
-        {
-          href: "https://github.com/facebook/docusaurus",
-          label: "GitHub",
-          position: "right",
-        },
       ],
     },
     footer: {
@@ -81,32 +74,14 @@ const config: Config = {
         },
         {
           title: "Community",
-          items: [
-            {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-            },
-            {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "X",
-              href: "https://x.com/docusaurus",
-            },
-          ],
+          items: [],
         },
         {
           title: "More",
-          items: [
-            {
-              label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
-            },
-          ],
+          items: [],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} hiyori, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
