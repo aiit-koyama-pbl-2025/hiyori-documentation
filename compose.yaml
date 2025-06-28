@@ -1,5 +1,0 @@
-services:
-  document:
-    build: .
-    ports:
-      - 8888:80
