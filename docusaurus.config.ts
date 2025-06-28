@@ -49,7 +49,7 @@ const config: Config = {
       title: "hiyori",
       logo: {
         alt: "My Site Logo",
-        src: "img/logo.svg",
+        src: "img/hiyori-logo.png",
       },
       items: [
         {
