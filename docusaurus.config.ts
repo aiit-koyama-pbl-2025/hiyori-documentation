@@ -13,11 +13,11 @@ const config: Config = {
     v4: true,
   },
 
-  url: "https://your-docusaurus-site.example.com",
-  baseUrl: "/",
+  url: "https://aiit-koyama-pbl-2025.github.io",
+  baseUrl: "/hiyori-documentation/",
 
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "hiyori", // Usually your repo name.
+  organizationName: "aiit-koyama-pbl-2025", // Usually your GitHub org/user name.
+  projectName: "hiyori-documentation", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
