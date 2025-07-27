@@ -12,7 +12,8 @@ Let's discover **hiyori in less than 5 minutes**.
 
 ### 必要なもの
 
-- curl コマンドを実行できる環境
+- zipファイルを作成できる環境
+- ブラウザ
 
 ## Flask アプリケーションの作成
 
@@ -86,23 +87,38 @@ Compress-Archive -Path .\app\* -DestinationPath .\app.zip
 
 ## アプリケーションのデプロイ
 
-以下の curl コマンドを実行して、アプリケーションをアップロードします。<br/>
-このコマンドは、zip ファイルをサーバーにアップロードし、割り当てられたアプリケーション ID を UUID 変数に格納します。
+https://portal.hiyori.cloud/ にアクセスします。
 
-```
-UUID=$(curl -s -X POST http://hiyori.cloud:8081/api/upload \
- -F "file=@app.zip" \
- | tee /dev/tty \
- | jq -r '.id')
-```
+<img 
+  src="/img/gui-1.png" 
+  alt="アップロード画面" 
+  width="600" 
+  style={{
+    border: '1px solid #ccc',
+    borderRadius: '4px'
+  }}
+/>
+
+参照ボタンを押して、アプリケーションのzipファイルを選択します。  
+次にデータベース利用オプションを選択します。  
+zipファイルの選択とデータベースオプションの選択ができたら、アップロードボタンを押します。  
+
+そうすると以下の画面が表示されます。アップロード成功と表示されれば成功です。  
+デプロイされたアプリケーションのURLが表示されます。  
+
+<img 
+  src="/img/gui-2.png" 
+  alt="アップロード画面" 
+  width="600" 
+  style={{
+    border: '1px solid #ccc',
+    borderRadius: '4px'
+  }}
+/>
 
 ## 動作確認
 
-アップロードが完了したら、以下のコマンドでアプリケーションが正しく動作しているか確認します。
-
-```
-curl -H "Host: ${UUID}.hiyori.cloud" http://hiyori.cloud
-```
+アップロードが完了したら、ブラウザからアプリケーションのURLにアクセスします。
 
 期待通り`"foo!"`というレスポンスが返れば成功です 🎉
 :::info レスポンスが返ってこない時
