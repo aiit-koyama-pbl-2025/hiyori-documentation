@@ -90,7 +90,7 @@ Compress-Archive -Path .\app\* -DestinationPath .\app.zip
 https://portal.hiyori.cloud/ にアクセスします。
 
 <img 
-  src="img/gui-1.png" 
+  src={require('/static/img/gui-1.png').default}
   alt="アップロード画面" 
   width="600" 
   style={{
@@ -107,7 +107,7 @@ zipファイルの選択とデータベースオプションの選択ができ�
 デプロイされたアプリケーションのURLが表示されます。  
 
 <img 
-  src="img/gui-2.png" 
+  src={require('/static/img/gui-2.png').default}
   alt="アップロード画面" 
   width="600" 
   style={{
